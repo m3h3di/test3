@@ -1,0 +1,27 @@
+# .gitignore for Grails 1.0.3
+
+# web application files that are overwritten by "grails upgrade"
+#  cf. GRAILS_HOME/scripts/Upgrade.groovy, target( upgrade )
+# IDE support files that are overwritten by "grails upgrade"
+#  cf. GRAILS_HOME/scripts/CreateApp.groovy, target( createIDESupportFiles )
+# to be specific, you could replace "/*" below with your project name,
+#  e.g. "foobar.launch" (no slash)
+
+/bw/*.php~
+/bw/app.zip
+/bw/cake
+/bw/app/tmp
+/bw/app/config/core.php~
+/bw/app/config/database.php~
+/bw/app/views/users/login.ctp~
+/bw/app/views/users/upload.ctp~
+/bw/app/views/admin_sedf/by_buyer.ctp~
+/bw/app/views/admin_sedf/by_facility.ctp~
+/bw/app/views/admin/by_facility.ctp~
+/bw/app/views/admin/by_buyer.ctp~
+/bw/app/views/admin/cluster.ctp~
+/bw/app/views/layouts/default.ctp~
+/bw/app/views/layouts/cake.ctp~
+/bw/app/views/users/download.ctp~
+/bw/app/views/assessments/login.ctp~
+/bw/app/views/elements/leftMenu.ctp~

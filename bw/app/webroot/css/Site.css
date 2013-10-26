@@ -1,0 +1,387 @@
+﻿body {
+    background-color: #F1F1F1;
+    font-size: .8em;
+    font-family: Verdana, Arial, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+a:link    { color: #3b3b3b; text-decoration: underline; }
+a:visited { color: #3b3b3b; }
+a:hover   { color: #3b3b3b; text-decoration: none; }
+a:active  { color: #3b3b3b; }
+
+p, ul {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+.header-item {
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+
+/* users/login.ctp content start*/
+.login_content{ 
+	padding:0;
+	text-align:center;
+}
+
+
+
+.login_box_content{ 
+	background:#f1f1f1;
+	width:950px;
+	padding:10px 0;
+	margin:10px auto;
+	
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border:1px solid #e3eaed;
+}
+.login_content img{border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;}
+
+
+.login_field{ 
+	width:260px; 
+	height:auto;
+	font-size:18px;
+	text-align:left;
+	color:#757575;
+	margin:10px 0 0 0;
+	
+	
+}
+
+.login_text_box{ 
+	width:250px; 
+	height:30px;
+	
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:1px solid #bfdfef;
+}
+
+.login_button{ 
+	width:250px; 
+	height:auto;
+	margin:10px 0 0 0;
+}
+.login_button input{ 
+	width:200px;  
+}
+.login_button_style{ 
+	width:82px; 
+	height:36px;
+	background:url(../img/login_button.gif) no-repeat;
+	border:none;
+}
+
+.login_divider{
+	width:6px;
+	height:358px;
+	float:left;
+	margin:0 0 0 40px;
+	}
+
+.login_img{
+	width:511px;
+	height:315px;
+	float:right;
+	margin:20px 0 0 0;
+	}
+
+/* users/login.ctp content end*/
+
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page {
+    margin-left: 220px;
+    margin-right: 10px;
+	min-height:630px;
+	background: #fff;
+}
+
+.logindisplay {
+    font-size: 1.1em;
+    display: block;
+}
+
+.navigator {
+	margin-left: 10px;
+	display: block;
+	float:left;
+}
+
+.wrappedtree {
+   width: 700px;
+   white-space:normal;
+}
+
+div#logo {
+    display: block;
+    height: 75px;
+    background-image: url('../bwImg/star_logo.png');
+    background-repeat: no-repeat;
+    margin: 10px 0 0 15px;
+}
+
+div#main {
+    padding: 15px 30px 15px 30px;
+    background-color: #fff;
+    border-radius: 4px 0 0 0;
+    border-width: thick;
+    border-color: #333;
+    -webkit-border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    width: 850px;
+}
+
+legend {
+    text-align:right;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 200px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+}
+
+input[type="submit"], input[type="button"], button {
+	background:#d2d5d9 url('Office2010Silver/gradient.png') repeat-x 0 center;
+	border-color:#a4abb2;color:#3b3b3b;
+	display:inline-block;margin:0;padding:2px 6px;border-width:1px;border-style:solid;font-family:inherit;font-size:100%;line-height:1.435;text-align:center;cursor:pointer;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;
+}
+
+input[type="submit"]:hover, button:hover {
+	border-color:#f3d64a;background-color:#fae185;color:#000;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+    /*border: solid 1px #e8eef4;*/
+	border: solid 1px #f1f1f1;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+}
+
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 1em 0 0;
+    /*border: 1px solid black;*/
+	width: 200px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.display-field, 
+.editor-field {	
+    min-height: 2em;    
+    margin: 0.5em 0 0 0;
+	/*border: 1px solid red;*/
+	width: 628px;
+	display: inline-block;
+	vertical-align: top;
+	clear: right;
+}
+
+.table-label {
+    font-weight:bold;
+    padding: 0; 
+    margin: 1em 1em 0 0;
+}
+
+.table-field {
+    margin: 0 0.5em 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+
+.field-note {
+	font-style:italic;
+}
+
+.required-mark {
+	color: red;
+	margin-left: -5px;
+	margin-right: 5px;
+	vertical-align: top;
+}
+
+.dropdown 
+{
+    width: 300px;
+}
+
+/* Begin Footer */
+.bot-wrapper{
+	background:#fff url(../images/brand-symbol.png) 50% repeat-x;
+	height:15px;
+}
+
+footer{
+	font-size:11px;
+	font-family:Verdana, Geneva, sans-serif;
+	background:#bf2e1a;
+}
+.footer-wrapper{
+	background:url(images/bg-footer-wrapper.jpg) 50% 0 repeat-y;
+	width:1080px;
+	margin:0 auto;
+	padding-bottom:30px;
+}
+.footer-content{
+	width:960px;
+	overflow:hidden;
+	padding-top:10px;
+}
+.copyright{
+	width:650px;
+	float:left;
+	text-align:center;
+}
+.copyright ul{
+	margin-bottom:3px;
+}
+.copyright ul li{
+	margin-left:0;
+	display:inline;
+}
+.footer-content, .copyright ul li a{
+	color:#ffffff;
+}
+.copyright ul li a:hover, .copyright ul li.current-menu-item a, .copyright ul li.current-page-item a{
+	color:#3e0000;
+}
+.social-network{
+	width:300px;
+	float:right;
+	text-align:right;
+}
+.poweredby{
+	clear:both;
+	text-align:center;
+	padding:20px 0;
+}
+.poweredby img{
+	padding:0 5px;
+}
+
+/* End Footer */

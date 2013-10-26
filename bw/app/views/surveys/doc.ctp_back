@@ -1,0 +1,218 @@
+<style>
+tr{border:0}
+td{padding:7px 10px;border: 1px solid #c1c1c1;vertical-align: top;}
+.boldText{font-weight:bold}
+.boldBg{font-weight:bold;background:rgb(57, 40, 100);color:#fff}
+</style>
+<?php
+//echo '<pre style="text-align:left">';
+//print_r($surveyData);
+//echo "</pre>";
+
+?>
+<!--
+thank you 
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+-->
+
+<?php
+if($surveyData){ ?>
+<br><br><br>
+<div style="width:800px;margin:0px auto;">
+	<b>Supplier Name:</b> <?= $surveyData[42]['SurveyData']['AnswerText']; ?>  <br>
+	<b>Supplier Address:</b> <?= $surveyData[43]['SurveyData']['AnswerText']; ?> <br>
+	<b>GPS Coordinates:</b> <?= $surveyData[81]['SurveyData']['AnswerText']; ?> <br>
+	<b>Assessment date:</b> <?= $surveyData[42]['SurveyData']['survey_date']; ?> <br>
+	<b>Total number of assessment reports (including this one):</b> <br>
+</div>
+<br><br><br>
+
+	<table style="text-align:left;padding:0px;border-collapse:collapse; width:800px;margin:0px auto" >
+		
+				<tr>
+					<td colspan="4" style="background:rgb(57, 40, 100);color:#FFF;font-weight:bold">GENERAL INFORMATION</td>
+				</tr>
+		<?php
+		$i = 0;
+		$number = 0;
+		foreach($surveyData as $key=>$val){		
+			if($val['SurveyData']['cluster_id'] != 10) continue;
+			$i++;
+			$number++;
+			$cluster= $val['Cluster'];
+			$question = $val['Question'];
+			$ans = $val['SurveyData'];
+			
+			//echo '<pre style="text-align:left">';
+			//print_r($val);
+			//echo "</pre>";
+			
+			if( ($i==15 && $i==$number) || ($i==18 && $i==$number) || ($i==22 && $i==$number) || ($i==1 && $i!=$number) || ($i==19 && $i!=$number) ){
+				?>
+				</table>	
+				<br/>
+				<table style="text-align:left;padding:0px;border-collapse:collapse; width:800px;margin:0px auto" >
+					<tr>
+						<td colspan="4" style="background:rgb(57, 40, 100);color:#FFF;font-weight:bold">
+							<?php
+							if($i == 15 and $i==$number) echo "ORGANISATION";
+							else if($i == 18 and $i==$number )	echo "COMPLIANCE";
+							else if($i == 22 and $i==$number){
+								echo "ENVIRONMENTAL";
+								$i=1;
+							}
+							else if($i == 1 and $i!=$number){
+								echo "ENVIRONMENTAL";
+								$i=1;
+							}
+							else if($i == 19 and $i!=$number) echo "GEOGRAPHIC  SITE";
+							
+							?>
+							
+						</td>
+					</tr>
+				<?php
+			}
+			
+			
+			
+			if($question['type'] == 1){
+				?>
+				<tr>
+					<td rowspan="2" width="2%" style="border-right:0"><?=$i?>. </td>
+					<td rowspan="2" style="border-left:0"><?=$question['text']?></td>
+					<td class="boldBg" width="25%" >Respond</td>
+					<td class="boldBg" width="25%">Comments/Details</td>				
+				</tr>
+				<tr>				
+					<td ><?=$ans['AnswerText']?></td>
+					<td style="white-space:pre-line"><?=$ans['PersonalNotes']?></td>		
+				</tr>
+				<?
+			}
+			else{
+				?>
+				<tr>
+					<td style="border-right:0"><?=$i?>. </td>
+					<td style="border-left:0"><?=$question['text']?></td>
+					<td colspan="2" style="white-space:pre-line" width="50%"><?=$ans['AnswerText']?></td>
+								
+				</tr>				
+				<?
+			}
+		}
+		?>
+	</table>
+	<br/><br/><br/>
+	<?php
+	//======================Finding Compliace ========================
+	foreach($surveyData as $key=>$val){		
+		if($val['SurveyData']['QuestionType'] != "Compliance") continue;
+		
+		$cluster= $val['Cluster'];
+		$question = $val['Question'];
+		$ans = $val['SurveyData'];
+		
+		
+		//Level of Difficulty
+		$lowBg = '';
+		$midBg ='';
+		$highBg ='';
+		if($ans['lod'] == "low") $lowBg = 'background:#6495ED';
+		if($ans['lod'] == "medium") $midBg ='background:#6495ED';
+		if($ans['lod'] == "high") $highBg ='background:#6495ED';
+		
+		//InterView
+		$o = ''; 
+		if($ans['Observation'] == "true") $o='x';
+		$d = ''; 
+		if($ans['Documentation'] == "true") $d='x';
+		$m = ''; 
+		if($ans['InterviewWithManagement'] == "true") $m='x';
+		$u = ''; 
+		if($ans['InterviewWithUnion'] == "true") $u='x';
+		$w = ''; 
+		if($ans['InterviewWithWorker'] == "true") $w='x';
+		$ot = ''; 
+		if($ans['InterviewWithOther'] == "true") $ot='x';
+		
+		
+		
+		if($ans['AnswerYesNo'] == "false"){
+			//echo '<pre style="text-align:left">';
+			//print_r($val);
+			//echo "</pre>";
+			?>
+			<table style="text-align:left;padding:0px;border-collapse:collapse; width:800px;margin:0px auto" >
+				<tr >
+					<td class="boldText" width="20%">Compliance Point</td>
+					<td width="45%"><?=$cluster['name']?></td>
+					<td width="35%" colspan="6" >Q<?=$question['id']?></td>
+				</tr>
+				<tr>
+					<td class="boldText">Issue</td>
+					<td ><?=$question['issue']?></td>
+					<td  class="boldText" colspan="6">Supporting Information</td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="boldText">Question</td>
+					<td rowspan="2"><?=$question['question']?></td>
+					<td colspan="6">Interview</td>
+				</tr>		
+				<tr>
+					<!--
+					<td rowspan="3"><div class="verticalText">Observation</div></td>
+					<td rowspan="3">Documentation</td>
+					<td rowspan="3">Management</td>
+					<td rowspan="3">Union</td>
+					<td rowspan="3">Worker</td>
+					<td rowspan="3">Other</td>
+					-->
+					
+					<td rowspan="3" class="verticalText">Ob</td>
+					<td rowspan="3" class="verticalText">Do</td>
+					<td rowspan="3" class="verticalText">Ma</td>
+					<td rowspan="3" class="verticalText">Un</td>
+					<td rowspan="3" class="verticalText">Wo</td>
+					<td rowspan="3" class="verticalText">Ot</td>
+					
+				</tr>
+				<tr>
+					<td rowspan="4" class="boldText">Finding</td>
+					<td rowspan="4"><?=$ans['AnswerText']?></td>
+					
+				</tr>
+				<tr>			
+				</tr>
+				<tr>
+					<td ><?=$o?></td>
+					<td ><?=$d?></td>
+					<td ><?=$m?></td>
+					<td ><?=$u?></td>
+					<td ><?=$w?></td>
+					<td ><?=$ot?></td>
+				</tr>
+				<tr>
+					<td colspan="6" class="boldText">Level of Difficulty to Close Out Findings:</td>
+				</tr>
+				<tr>
+					<td class="boldText" >Legal Reference</td>
+					<td ><?=$question['legal_basis']?></td>
+					<td colspan="2" style="<?=$lowBg?>" >Low</td>
+					<td colspan="2" style="<?=$midBg?>" >Medium</td>
+					<td colspan="2" style="<?=$highBg?>" >High</td>
+				</tr>
+				<tr>
+					<td class="boldText">Recommendation</td>
+					<td colspan="7"><?=$ans['PersonalNotes']?></td>
+				</tr>
+				
+			</table>
+			<br/><br/><br/>
+			
+			<?
+			
+		}
+	}
+}
+?>

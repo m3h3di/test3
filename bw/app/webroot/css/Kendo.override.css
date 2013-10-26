@@ -1,0 +1,17 @@
+﻿/* Font fix for widgets */
+.k-widget, .k-widget button, .k-widget input, .k-widget select, .k-button, .k-formatted-value {font-family: inherit;}
+/* Grid Menu fix */
+.k-grid td,.k-grid td .k-header{overflow: visible;background: none;border-style: none;}
+.k-grid td .k-header{padding: 0;}
+.k-grid td .k-state-active,.k-menu .k-header .k-state-active{background-color: #fae185;border-color: #f3d64a;}
+.k-grid td .k-header .k-link{height: auto;line-height: normal;margin: 0;padding: 0.25em 0.97em;}
+.k-grid td .k-link:hover{color: inherit;}
+/* Grid Header wrap */
+.k-grid .k-grid-header .k-header .k-link {height: auto;}
+.k-grid .k-grid-header .k-header,.k-grid .k-grid-header .k-last-header {white-space: normal;}
+/* TabStrip right align */
+.k-tabstrip .k-reset { text-align: right; }
+/* Grid pager fix */
+.k-pager-input .k-textbox{width: 35px;}
+
+.k-dropdown { width: 300px; }
