@@ -1,0 +1,99 @@
+        /* Styles for Example #2 */
+        #example2 {
+            margin:0;
+            padding:0;
+            width:300px;
+            list-style-type:none;
+            background-color:#FFFFFF;
+            color:#000000;
+            line-height:120%;
+            height:224px;
+			overflow:hidden;
+			font-size:14px;
+        }
+
+        #example2 a {
+            display:block;
+            font-weight:normal;
+            text-decoration:none;
+			color:#333333;
+			font-size:12px;
+
+        }
+
+        #example2 ul {
+            overflow: hidden;
+            margin:0;
+            padding:0;
+        }
+
+        #example2 li {
+            margin:0;
+            padding:0;
+            list-style-type:none;
+        }
+
+        #example2 li a {
+            width:285px;
+            padding:5px 0 0 15px;
+            display:block;
+            color:#333;
+            background-image:url(../img/ha-header.jpg);
+            height:25px;
+			font-weight:bold;
+			font-size:12px;
+        }
+
+        #example2 li a.closed {
+            color:#333 !important;
+            background-image:url(../img/ha-header.jpg) !important;
+        }
+
+        #example2 li.firstitem a.closed {
+            color:#333 !important;
+            background-image:url(../img/ha-header-first.jpg) !important;
+        }
+
+        #example2 li.lastitem a.closed {
+            color:#333 !important;
+            background-image:url(../img/ha-header-last.jpg) !important;
+        }
+
+        #example2 li li {
+            border-left:1px solid #E5E5E5;
+            border-right:1px solid #E5E5E5;
+            padding:0 15px 0 15px;
+            height:100px;
+			font-size:11px;
+			text-align:left;
+        }
+		#example2 li li a{
+			margin:0;
+			padding:0;
+			background:none;            
+			font-size:11px;
+			width:100% !important;
+			height:auto !important;
+			text-decoration:underline !important;			
+        }
+
+        #example2 li a.opened {
+            background-image:url(../img/ha-header-active.jpg);
+            color:#FFFFFF;
+        }
+
+        #example2 li.firstitem a.opened {
+            background-image:url(../img/ha-header-first-active.jpg);
+            color:#FFFFFF;
+        }
+
+        #example2 li.lastitem li {
+            margin-bottom:-4px;
+        }
+
+        #example2 li.lastitem ul {
+            background-image:url(../img/ha-footer.jpg);
+            background-repeat:no-repeat;
+            background-position:bottom;
+            padding-bottom:4px;
+        }

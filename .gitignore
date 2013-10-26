@@ -34,3 +34,11 @@
 /dec/app/config/database.php~
 /dec/app/views/admin/by_facility.ctp~
 /dec/app/views/admin/by_buyer.ctp~
+
+/ems/app.zip
+/ems/cake
+/ems/app/tmp
+
+/ems/app/config/database.php~
+/ems/app/controllers/admins_controller.php~
+/ems/app/views/admin/index.ctp~

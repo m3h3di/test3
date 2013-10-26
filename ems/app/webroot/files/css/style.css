@@ -1,0 +1,313 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {display:block}
+mark, rp, rt, ruby, summary, time {display:inline}
+
+
+/* Global properties */
+.css3{border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0 0 4px rgba(0, 0, 0, .4);-moz-box-shadow:0 0 4px rgba(0, 0, 0, .4);-webkit-box-shadow:0 0 4px rgba(0, 0, 0, .4);behavior:url(js/PIE.htc);position:relative}
+
+
+/* Body properties Start */
+body{
+	background:url(../images/body2.jpg) center repeat-y #FFFFFF;
+	width:1000px;
+	height:auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	margin:auto;
+	text-align:justify;
+	color:#666;
+	
+/*	-moz-box-shadow: 0px 0px 5px 5px #CCC;
+    -webkit-box-shadow: 0px 0px 5px 5px #CCC;
+    box-shadow: 0px 0px 5px 5px #CCC;
+	border:1px solid #c0c2c4;*/
+	
+    /* For IE 8 */
+/*    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#666666')";
+*/    /* For IE 5.5 - 7 */
+/*    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#666666');
+*/}
+
+
+.main{width:1000px; height:auto; margin:auto;}
+
+.clear{margin:0px; font-size:0px; padding:0px; clear:both; line-height:0px;}
+
+/* Body properties End */
+
+
+
+
+
+
+
+
+
+
+/* Font Size Start */
+.bold{font-weight:bold;}
+.italic{font-style:italic; font-size:12px}
+.bold_italic{font-weight:bold; font-style:italic;;}
+
+.underline{font-weight:bold; text-decoration:underline;}
+
+
+.heading{font-size:18px; color:#8bba00;}
+.heading_bold{font-size:18px; color:#999; font-weight:bold;}
+.heading_bold_black{font-size:18px; color:#666; font-weight:bold;}
+
+.top_subject_name{font-size:31px; font-weight:bold; color:#999; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;  letter-spacing:-1px; border-bottom:dotted;}
+
+.sub_heading{font-size:18px; color:#999; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-style:italic;}
+
+
+.line_hight{
+		line-height:44px;
+}
+
+/* Font Size End */
+
+
+
+/* Link Start */
+.link a{color:#8bba00; text-decoration:underline;}
+.link a:hover{color:#8bba00; font-weight:bold; text-decoration:blink;}
+
+/* Link End */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mgt Start */
+.hori_div_area_center{
+		width:1000px;
+		height:auto;
+		float:left;
+		text-align:center;
+}
+.hori_div_area_left{
+		width:1000px;
+		height:auto;
+		float:left;
+		text-align:justify;
+}
+.hori_div_area{
+		width:900px;
+		height:auto;
+		float:left;
+		padding-left:50px;
+		padding-right:50px;
+}
+
+
+
+/* Best Practice Start */
+.best_practice_left_side{
+	width:670px;
+	height:auto;
+	float:left;
+}
+.best_practice_right_side{
+	width:230px;
+	height:auto;
+	float:left;
+}
+
+.best_practice_right_side2{
+	width:300px;
+	height:auto;
+	float:left;
+}
+
+.best_practice_left_side_aero{
+	width:25px;
+	height:auto;
+	float:left;
+	padding-top:2px;
+}
+.best_practice_left_side_txt{
+	width:600px;
+	height:auto;
+	float:left;
+	padding-right:25px;
+}
+.best_practice_left_side_txt2{
+	width:875px;
+	height:auto;
+	float:left;
+}
+
+.best_practice_left_side_txt3{
+	width:580px;
+	height:auto;
+	float:left;
+}
+
+
+.round_box{
+	width:878px;
+	height:auto;
+	float:left;
+	border: 1px solid #8bba00;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	behavior:url(js/PIE.htc);
+	
+	padding:10px;
+}
+
+.round_box2{
+	width:208px;
+	height:auto;
+	float:left;
+	border: 1px solid #8bba00;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	behavior:url(js/PIE.htc);
+	
+	padding:10px;
+}
+
+.right_bullet_area{
+	width:208px;
+	height:auto;
+	float:left;
+}
+.right_aero_txt{
+	width:183px;
+	height:auto;
+	float:left;
+}
+
+/* Best Practice End */
+
+
+
+
+/* Recordkeeping Start */
+.recordkeeping_aero_txt{
+		width:760px;
+		height:auto;
+		float:left;
+}
+.recordkeeping_aero{
+	width:30px;
+	height:auto;
+	float:left;
+	padding-top:2px;
+	padding-left:40px;
+}
+.recordkeeping_aero2{
+		width:20px;
+		height:auto;
+		float:left;
+		padding-left:80px;
+
+}
+
+.recordkeeping_aero_txt2{
+		width:800px;
+		height:auto;
+		float:left;
+}
+
+.recordkeeping_aero_txt3{
+	width:640px;
+	height:auto;
+	float:left;
+	padding-right:25px;
+	line-height:22px;
+}
+/* Recordkeeping End */
+
+/* mgt End */
+
+
+
+
+/* Chemicals and Hazardous Materials Management Start */
+.bullet_left_space{
+	width:125px;
+	height:auto;
+	float:left;
+}
+.baseline_survey_bullet_txt{
+	width:750px;
+	height:auto;
+	float:left;
+}
+
+.baseline_survey_bullet_txt2{
+	width:450px;
+	height:auto;
+	float:left;
+}
+
+.baseline_survey_bullet_txt3{
+	width:580px;
+	height:auto;
+	float:left;
+}
+
+.best_practice_right{
+	width:450;
+	height:auto;
+	float:right;
+
+}
+/* Chemicals and Hazardous Materials Management End */
+
+
+
+ 
+/*Cleaner Production Start */
+.cleaner_production_txt{
+	width:480px;
+	height:auto;
+	float:left;
+	
+	padding-right:20px;
+}
+
+.round_box3{
+	width:378px;
+	height:auto;
+	float:left;
+	border: 1px solid #8bba00;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	behavior:url(js/PIE.htc);
+	
+	padding:10px;
+}
+
+
+
+.cleaner_production_aero{
+	width:25px;
+	height:auto;
+	float:left;
+}
+/*Cleaner Production End */
+
+
+
+
+
