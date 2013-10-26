@@ -1,0 +1,38 @@
+SectionQuestion
+---------------
+
+SELECT t1.factory_id ,t1.status, count(*) AS followup FROM factory_ans_tables as t1 WHERE t1.type='radio' AND LCASE(SUBSTR( t1.text, 1, 3 ))='yes' AND (t1.section = 3 ) GROUP BY t1.factory_id , t1.status
+
+
+SELECT factories.id,factories.factory_name,factories.Zone, RESULT.followup, RESULT.status FROM factories LEFT JOIN (SELECT t1.factory_id ,t1.status, count(*) AS followup FROM factory_ans_tables as t1 WHERE t1.type='radio' AND LCASE(SUBSTR( t1.text, 1, 3 ))='yes' AND (t1.section = 3 ) GROUP BY t1.factory_id , t1.status) AS RESULT ON factories.id=RESULT.factory_id WHERE factories.status!=0 
+
+
+
+By Overview
+------------
+
+section Overview
+----------------
+SELECT factories.id,factories.factory_name,factories.Zone,factories.area, RESULT.point,RESULT.status FROM factories LEFT JOIN (
+SELECT t1.factory_id , SUM(t1.points) as point,t1.status FROM ratings as t1 WHERE (t1.section = 3 ) GROUP BY  t1.factory_id,t1.status
+) AS RESULT ON factories.id=RESULT.factory_id WHERE factories.status!=0 
+
+
+SELECT factories.id,factories.factory_name,factories.Zone,factories.area, RESULT.point,RESULT.status FROM factories LEFT JOIN ( SELECT t1.factory_id , SUM(t1.points) as point,t1.status FROM ratings as t1 WHERE (t1.section = 3 ) GROUP BY t1.factory_id,t1.status ) AS RESULT ON factories.id=RESULT.factory_id WHERE factories.status!=0 
+
+
+
+
+
+OverAll
+-------
+SELECT ratings.factory_id, SUM(ratings.points) AS sum, COUNT(*) FROM ratings WHERE ratings.status=1  GROUP BY  ratings.status 
+
+
+SELECT ratings.status, SUM(ratings.points) AS sum, COUNT( distinct(ratings.factory_id) ) as num FROM ratings GROUP BY  ratings.status 
+
+
+individual
+---------
+
+SELECT ratings_haz.status, SUM(ratings_haz.points) AS sum, COUNT(*) FROM ratings_haz WHERE ratings_haz.rating_rule_id=2  GROUP BY   ratings_haz.status

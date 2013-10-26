@@ -1,0 +1,98 @@
+<?php
+class NoticeBoardsController extends AppController {
+
+	var $name = 'NoticeBoards';
+	
+	function beforeFilter() {
+		$this->layout = 'cake';
+		//parent::beforeFilter(); 
+		//$this->Auth->allow('*');
+		//$this->Auth->allow('add');
+		if( $this->Session->read('Auth.User.status') != 1 ) // status=1 means Admin
+			$this->redirect( "/counselors/home" );
+	}
+	
+	function admin_index() {
+			//$this->layout = 'default1';
+		$this->NoticeBoard->recursive = 0;
+		$this->set('noticeBoards', $this->paginate());
+	}
+
+	function view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid notice board', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->set('noticeBoard', $this->NoticeBoard->read(null, $id));
+	}
+
+	function admin_add() {
+	
+		
+		if(!empty($this->data))
+		{
+            
+			$d=$this->data['NoticeBoard']['day'];
+			$m=$this->data['NoticeBoard']['month'];
+			$y=$this->data['NoticeBoard']['year'];
+			$valid_until=$y."-".$m."-".$d;
+			//echo $deadline;
+			//$valid_until= date('Y/m/d h:m:s', time());
+			
+			$this->data['NoticeBoard']['valid_until']=$valid_until;
+			
+			$dp=$this->data['NoticeBoard']['pday'];
+			$mp=$this->data['NoticeBoard']['pmonth'];
+			$yp=$this->data['NoticeBoard']['pyear'];
+			$published=$yp."-".$mp."-".$dp;
+			
+			//$published=date('Y/m/d', time());
+			$this->data['NoticeBoard']['published_date']=$published;
+			
+			if ($this->NoticeBoard->save($this->data)) {
+				$this->Session->setFlash('The notice is added successfully');
+				$this->redirect(array('action' => 'add'));
+			} else{
+				$this->Session->setFlash(__('The work could not be saved. Please, try again.', true));
+			}
+            //$this->redirect('somecontroller/someaction');
+			
+			
+		}
+		
+	}
+
+	function admin_edit($id = null) {
+			
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid notice board', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->NoticeBoard->save($this->data)) {
+				$this->Session->setFlash(__('The notice board has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The notice board could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->NoticeBoard->read(null, $id);
+		}
+	}
+
+	function admin_delete($id = null) {
+			
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for notice board', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if ($this->NoticeBoard->delete($id)) {
+			$this->Session->setFlash(__('Notice board deleted', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->Session->setFlash(__('Notice board was not deleted', true));
+		$this->redirect(array('action' => 'index'));
+	}
+}
+?>

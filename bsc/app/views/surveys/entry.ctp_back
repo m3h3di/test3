@@ -1,0 +1,132 @@
+
+<?php  echo $javascript->link('jquery.min.js'); 
+echo "<pre>";
+//print_r($company);
+//print_r($all_questions);
+echo "</pre>";
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		/*$("#test").click(function () {
+			$("#q_4").slideToggle("slow");
+		});*/
+		
+	});
+
+	function my_toggle(qq){
+		var r="#"+qq;
+		
+			$(r).slideToggle("fast");
+		
+	}
+</script>
+
+
+<div class="welcome"><!--welcome start-->
+	<div class="welcome_top"><!--welcome_top start--> </div><!--welcome_top end-->
+    
+    <div class="welcome_body"><!--welcome_body start--> 
+    	<div class="welcome_text"><!--welcome_text start-->
+        	This is Entry Page </b>
+        </div><!--welcome_text end -->
+     	<div class="clear"></div>   
+    </div><!--welcome_body end-->
+    <div class="welcome_bottom"><!--welcome_bottom start--> </div><!--welcome_bottom end-->
+</div>
+
+<div style="text-align:left">
+<table width="100%">
+	<tr>
+		<th width=3% >S/N</th>
+		<th width=50% style="text-align:center">Compliance Issues</th>
+		<th width="5%">Status</th>
+		<th width="14%" style="text-align:center">Irregularities</th>
+		<th width="14%" style="text-align:center">Suggestions</th>
+		<th width="14%" style="text-align:center">Remarks</th>
+	</tr>
+</table>
+<?php echo $form->create('Survey', array('action' => 'process','name'=>'test')); // crating form
+?>
+	<input name="company_id" type="hidden" value="<?php echo $company['Company']['id'] ?>" />
+<?php
+$number = 0;
+foreach($all_questions as $key=>$section){
+	
+	$op_name = "op_".$section['Survey']['id'];
+	$id_name = "q_".$section['Survey']['id'];
+	if($section['Survey']['type']  != 1){
+		//echo "&nbsp; <b>".$section['Survey']['type'].". &nbsp;".$section['Survey']['name']."</b><br/><br/>";
+		if($section['Survey']['id'] == 3)
+			echo '<span id="'.$op_name.'" onclick="my_toggle(\''.$id_name.'\')" >';
+		else
+			echo '<span style=";cursor:pointer" id="'.$op_name.'" onclick="my_toggle(\''.$id_name.'\')" >';
+			
+		echo "&nbsp; <b>".$section['Survey']['type'].". &nbsp;&nbsp;".$section['Survey']['name'];
+		echo "</b></span><br/><br/>";	
+	}
+	else{
+		echo '<span style="padding-left:40px;cursor:pointer" id="'.$op_name.'" onclick="my_toggle(\''.$id_name.'\')" ><b>';
+		echo $section['Survey']['name'];
+		echo "</b></span><br/><br/>";
+	}
+	
+	if( !empty($section['Question']) ){?>
+		<div id="<?php echo $id_name; ?>" style="" >
+		<table   width="100%">
+			<?php
+			
+			foreach($section['Question'] as $key1=>$question){
+				$number++;
+				$id = $question['id'];?>
+				<tr>
+					<td width="3%"><?php echo $question['id']; ?></td>
+					<td width=50%><?php echo $question['question']; ?></td>
+                    
+					<td width="12%">
+                        <input name="data[<?php echo $id ?>][section_id]" type="hidden" value="<?php echo $question['section_id']; ?>" />
+                        <?php 
+                        if( $question['status'] == 1 ){
+                            ?>    
+                            <select name="data[<?php echo $id ?>][point]">
+                                <option value="1">YES</option>
+                                <option value="0">NO</option>
+                            </select>                        
+                            <?php
+                        }
+                        elseif($question['status'] == 2){
+                            ?>
+                            <select name="data[<?php echo $id ?>][point]">
+                                <option value="1">YES</option>
+                                <option value="0">NO</option>
+                                <option value="NA">NA</option>
+                            </select>
+                            <?php
+                        }
+                        elseif($question['status'] == 3){
+                            ?>
+                            <select name="data[<?php echo $id ?>][point]">
+                                <option value="1">Excellent</option>
+                                <option value="0.5">Good</option>
+                                <option value="0">Bad</option>
+                            </select>
+                            <?php
+                        }?>
+					</td>
+					<td  width="12%"><input name="data[<?php echo $id ?>][irregularity]" type="text" /></td>
+					<td  width="12%"><input name="data[<?php echo $id ?>][suggestion]" type="text" /></td>
+					<td  width="12%"><input name="data[<?php echo $id ?>][remark]" type="text" /></td>
+				</tr>
+				
+				
+				<?php 
+			}?>
+		</table>
+		</div>
+		<?php	
+	}
+}
+?>
+<input type="submit" value="Save" />
+</form>
+</div>

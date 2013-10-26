@@ -1,0 +1,75 @@
+
+<div class="welcome"><!--welcome start-->
+	<div class="welcome_top"><!--welcome_top start--> </div><!--welcome_top end-->
+    
+    <div class="welcome_body"><!--welcome_body start--> 
+    	<div class="welcome_text"><!--welcome_text start-->
+        	Welcome to Admin panel
+        </div><!--welcome_text end -->
+     	<div class="clear"></div>   
+    </div><!--welcome_body end-->
+    <div class="welcome_bottom"><!--welcome_bottom start--> </div><!--welcome_bottom end-->
+</div><!--welcome end-->
+
+<br /><br />
+
+
+
+<div class="company"><!--company start-->
+	<div class="company_info"><!--company_info start-->
+        
+        <div class="admin_panel_menu"><!--admin_panel_menu start-->
+         	<div class="admin_panel_menu_top"><!--admin_panel_menu_top start--></div><!--admin_panel_menu_top end-->
+         
+			<div class="admin_panel_menu_body"><!--admin_panel_menu_body start-->
+            	<div class="admin_panel"><!--admin_panel start-->
+        			<div class="admin_panel_title"><!--admin_panel_title start-->Admin Panel</div><!--admin_panel_title end-->
+        		</div><!--admin_panel end-->
+            	
+                <div class="admin_panel_line"><!--admin_panel_line start-->
+                	<?php echo $this->Html->image('admin_text_underline.gif', array('alt' => 'line','border'=>'0') );?>
+                </div><!--admin_panel_line end-->
+            
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item1 start-->
+            			 <?php echo $this->Html->link('User Management', array('controller'=>'users','action' => 'index')) ; ?>
+            		</div><!--admin_panel_menu_item1 end-->
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item2 start-->
+                        <?php echo $this->Html->link('Facility Management', array('controller'=>'companies','action' => 'index')); ?> 
+                    </div><!--admin_panel_menu_item2 end-->
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item1 start-->
+                        <?php echo $this->Html->link('Questions Management', array('controller'=>'questions','action' => 'index')); ?> 
+                    </div><!--admin_panel_menu_item1 end-->
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item2 start-->
+                        <?php echo $this->Html->link('Facility Analysis', array('action' => 'showlist')); ?> 
+                    </div><!--admin_panel_menu_item2 end-->
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item1 start-->
+                        <?php echo $this->Html->link('By Section Analysis', array('action' => 'bysection')); ?> 
+                    </div><!--admin_panel_menu_item1 end-->
+                     <div class="admin_panel_menu_item1"><!--admin_panel_menu_item2 start-->
+                        <?php echo $this->Html->link('By Different Criteria', array('action' => 'bycriteria')); ?> 
+                    </div><!--admin_panel_menu_item2 end-->
+                    <div class="admin_panel_menu_item1"><!--admin_panel_menu_item1 start-->
+                        <?php echo $this->Html->link('By Question', array('action' => 'byquestion')); ?> 
+                    </div><!--admin_panel_menu_item1 end-->
+                    
+                    <div class="clear"></div>
+            
+            </div><!--admin_panel_menu_body end-->
+            
+            <div class="admin_panel_menu_bottom"><!--admin_panel_menu_bottom start--></div><!--admin_panel_menu_bottom end-->
+            
+         </div><!--admin_panel_menu end-->
+          
+        
+    </div><!--company_info end-->
+	    	
+    <div class="company_table"><!--company_table start-->     
+    	<div class="puzzle"><!--puzzle start-->
+        	<?php echo $html->image('puzzle.gif', array('alt' => 'puzzle','border'=>'0') );?>
+        </div><!--puzzle end-->
+    </div><!--company_table end-->
+<div class="clear"></div> 	
+</div><!--company end-->
+  
+
+

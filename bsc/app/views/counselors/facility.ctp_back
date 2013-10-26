@@ -1,0 +1,348 @@
+<?php  echo $javascript->link('jquery.min.js'); ?>
+<?php  echo $javascript->link('jquery.jqplot.min.js'); ?>
+<?php  echo $javascript->link('jqplot.canvasTextRenderer.min.js'); ?>
+<?php  echo $javascript->link('jqplot.canvasAxisTickRenderer.min.js'); ?>
+<?php  echo $javascript->link('jqplot.dateAxisRenderer.min.js'); ?>
+
+<pre style="text-align:left">
+<?php
+//print_r($company_ans_list);
+$company_info = $company_info[0]['companies'];
+//print_r($company_info);
+?>
+</pre>
+
+ <script type="text/javascript" language="javascript">
+$(document).ready(function(){
+
+
+line1 = [['1/1/2006', 5], ['2/1/2006', 1], ['3/1/2006', 3], ['4/1/2006', 8], ['5/1/2006', 12], ['6/1/2006', 13], ['7/1/2006', 5.9],['8/1/2006', 8], ['9/1/2006', 12], ['10/1/2006', 13], ['11/1/2006', 5.9]];
+
+<?php  
+$line = "[";
+$tricks ="[";
+$i = 0;
+foreach($company_ans_list as $key=>$survey){
+	
+	$survey_date = $survey['company_ans_lists']['survey_date'];
+    $total_point = floatval($survey[0]['SUM( `status` )']);
+    $get_point = floatval($survey[0]['SUM(`point`)']);
+    $percent = round($get_point / $total_point * 100.00, 2) ;
+    //$percent_r=round($percent,2);
+	if($i == 0){
+		$line.= "['".$survey_date."',". $percent ."]";
+		$tricks.= "'".$survey_date."' ";
+	}
+	else {
+		$line.= ", ['".$survey_date."',". $percent ."]";
+		$tricks.= " ,'".$survey_date."'";
+	}
+	$i++;
+}
+$line.="]";
+$tricks.="]";
+?>
+
+line2 = <?php echo $line ?>;
+
+
+plot1 = $.jqplot('chart1', [line2], {
+  legend: {show:false, location: 'nw', yoffset: 6},
+  axes:{
+    xaxis:{
+      renderer:$.jqplot.DateAxisRenderer, min:'August 1, 2010', tickInterval: "1 months",
+	  rendererOptions:{tickRenderer:$.jqplot.CanvasAxisTickRenderer},
+      tickOptions:{formatString:'%b,%Y', fontSize:'10pt', fontFamily:'Tahoma', angle:-40, fontWeight:'normal', fontStretch:1}, 
+      //ticks:['12/1/2005', '1/1/2006', '2/1/2006', '3/1/2006', '4/1/2006', '5/1/2006', '6/1/2006', '7/1/2006', '8/1/2006', '9/1/2006', '10/1/2006']
+	  ticks:<?php echo $tricks ?>
+    },
+	/*xaxis:{
+		renderer:$.jqplot.DateAxisRenderer,
+		min:'August 30, 2008',
+		tickInterval:'1 month',
+		rendererOptions:{
+		tickRenderer:$.jqplot.CanvasAxisTickRenderer},
+		tickOptions:{formatString:'%b %#d, %Y', fontSize:'10pt', fontFamily:'Tahoma', angle:-40, fontWeight:'normal', fontStretch:1}
+	} */
+	
+	yaxis:{
+		renderer: $.jqplot.LogAxisRenderer, 
+	  	min:50,  
+		max:100,
+		tickOptions:{formatString:''},
+		  
+
+    }
+  }
+});
+
+  });
+</script>
+
+<div class="welcome">
+	<div class="welcome_top"></div>
+    
+    <div class="welcome_body">
+    	<div class="welcome_text">
+        	<?php echo $this->Html->link("Home","/") ?> >> <b><?php echo $company_info['name'] ?></b>
+        </div>
+     	<div class="clear"></div>   
+    </div>
+    <div class="welcome_bottom"></div>
+</div><!--welcome end-->
+
+
+<div class="company"><!--company start-->
+	<div class="company_info"><!--company_info start-->
+    	<div class="company_title"><!--company_title start-->Company Information</div><!--company_title end-->
+
+		<div class="small_line">
+        	<?php echo $html->image('plain_line1.gif', array('alt' => 'bottom','border'=>'0') );?>
+        </div>
+		
+        <div class="company_description">
+        	<font color="#58595b"><strong>Name</strong></font> of the Company: <font color="#58595b">
+            	<strong><?php echo $company_info['name'] ?></strong>
+            </font>
+            <div class="small_line">
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Plot No : <font color="#58595b"><strong><?php echo $company_info['plot_no'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div><!--small_line end-->
+            
+            Zone : <font color="#58595b"><strong><?php echo $company_info['zone'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div><!--small_line end-->
+            
+            Country : <font color="#58595b"><strong><?php echo $company_info['country'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div><!--small_line end-->
+            
+            Product(s) : <font color="#58595b"><strong><?php echo $company_info['product'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>            
+            
+            Proposed Investment (Million US$): 
+            <font color="#58595b"><strong><?php echo $company_info['proposed_investment'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Actual Investment (Million US$): 
+            <font color="#58595b"><strong><?php echo $company_info['actual_investment'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Proposed Employee: 
+            <font color="#58595b"><strong><?php echo $company_info['proposed_employee'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Actual Employee: 
+            <font color="#58595b"><strong><?php echo $company_info['actual_employee'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Male: 
+            <font color="#58595b"><strong><?php echo $company_info['male'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Female: 
+            <font color="#58595b"><strong><?php echo $company_info['female'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Proposed Expatriate: 
+            <font color="#58595b"><strong><?php echo $company_info['proposed_expatriate'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Actual Expatriate: 
+            <font color="#58595b"><strong><?php echo $company_info['actual_expatriate'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+            
+            Commercial Operation Date: 
+            <font color="#58595b"><strong><?php echo $company_info['commercial_operation'] ?></strong></font>
+             <div class="small_line"><!--small_line start-->
+        		<?php echo $html->image('small_dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        	</div>
+                        
+        </div><!--company_description end-->
+        
+    	
+    </div><!--company_info end-->
+	    	
+    <div class="company_table" style="overflow-y:scroll;"><!--company_table start-->     
+    	<div class="company_table_title"><!--company_table_title start-->Survey Details</div><!--company_table_title end-->
+
+		<div class="big_line"><!--big_line start-->
+        	<?php echo $html->image('plain_line2.gif', array('alt' => 'bottom','border'=>'0') );?>
+        </div><!--big_line end-->
+        
+        <div class="survey_detail"><!--survey_detail start-->
+        	<div class="survey_detail_td1"><!--survey_detail_td1 start-->
+                <div class="survey_detail_td1_top"><!--survey_detail_td1_top start--></div><!--survey_detail_td1_top end-->
+                
+                <div class="survey_detail_td1_body"><!--survey_detail_td1_body start-->Survey Date</div><!--survey_detail_td1_body end-->
+                
+                <div class="survey_detail_td1_bottom"><!--survey_detail_td1_bottom start--></div><!--survey_detail_td1_bottom end-->
+            </div> <!--survey_detail_td1 end-->  
+            
+            <div class="survey_detail_td2"><!--survey_detail_td2 start-->
+                <div class="survey_detail_td2_top"><!--survey_detail_td2_top start--></div><!--survey_detail_td2_top end-->
+                
+                <div class="survey_detail_td2_body"><!--survey_detail_td2_body start-->Rating</div><!--survey_detail_td2_body end-->
+                
+                <div class="survey_detail_td2_bottom"><!--survey_detail_td2_bottom start--></div><!--survey_detail_td2_bottom end-->
+            </div> <!--survey_detail_td2 end--> 
+            
+            <div class="survey_detail_td3"><!--survey_detail_td3 start-->
+                <div class="survey_detail_td3_top"><!--survey_detail_td3_top start--></div><!--survey_detail_td3_top end-->
+                
+                <div class="survey_detail_td3_body"><!--survey_detail_td3_body start-->Status</div><!--survey_detail_td3_body end-->
+                
+                <div class="survey_detail_td3_bottom"><!--survey_detail_td3_bottom start--></div><!--survey_detail_td3_bottom end-->
+            </div> <!--survey_detail_td3 end--> 
+            
+            <div class="survey_detail_td4"><!--survey_detail_td4 start-->
+                <div class="survey_detail_td4_top"><!--survey_detail_td4_top start--></div><!--survey_detail_td4_top end-->
+                
+                <div class="survey_detail_td4_body"><!--survey_detail_td4_body start-->View Details</div><!--survey_detail_td4_body end-->
+                
+                <div class="survey_detail_td4_bottom"><!--survey_detail_td4_bottom start--></div><!--survey_detail_td4_bottom end-->
+            </div> <!--survey_detail_td4 end--> 
+                        
+            <div class="clear"></div>
+        </div><!--survey_detail end-->
+        
+        
+
+        <table class="survey_table2">
+        	   
+        	
+              <?php   
+                    foreach($company_ans_list as $key=>$survey){
+                        $company_id = $survey['company_ans_lists']['company_id'];
+                        
+						$date = $survey['company_ans_lists']['survey_date'];
+                        $total_point = $survey[0]['SUM( `status` )'];
+                        $get_point = $survey[0]['SUM(`point`)'];
+                        $percent = $get_point / $total_point * 100.00 ;
+                        $percent_r=round($percent,2);
+                        
+                        ?> 
+                        <tr>
+                        <td width="181"><?php echo strftime("%B,%Y", strtotime($date)); ?></td>
+                        <td width="102"><?php echo $percent_r;?>%</td>
+                        <td  width="171"> 
+                            <!-- The css of this div should be inline otherwise it will not get the value of $percent_r-->
+                            <div style="  background:no-repeat url('<?php echo $html->url('/img/percentage_bar.gif');?>');width:<?php echo $percent_r;?>%; height:15px;">
+                                    
+                            </div>
+                            
+                        </td>
+                        <td ><?php echo $this->Html->link('Details', array('controller'=>'surveys','action' => 'showans',$company_id,$date)); ?></td>
+                        </tr>
+                        
+                    <?php }
+					
+					$link =  $this->Html->url("/surveys/entry/$company_id");
+					?>  
+             
+             
+        </table>
+        <br /><br />
+		<div class="add_entry" align="right"><!--add_entry start-->
+        	<input type="submit" name="add_entry" id="add_entry" onclick="window.location.href='<?php echo $link ?>'" class="add_entry_button" value="" />
+        </div>
+
+
+    </div><!--company_table end-->
+<div class="clear"></div> 	
+</div><!--company end-->
+  
+<br />
+<!--<div class="dot_line">
+	<?php //echo $html->image('dot_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+</div>-->
+
+
+<div class="company"><!--company start-->
+	<div class="company_info"><!--company_info start-->
+    	<div class="company_title"><!--company_title start-->Google Map</div><!--company_title end-->
+
+		<div class="small_line"><!--small_line start-->
+        	<?php echo $html->image('plain_line1.gif', array('alt' => 'bottom','border'=>'0') );?>
+        </div><!--small_line end-->
+		<!--
+        <iframe width="280" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;safe=off&amp;client=firefox-a&amp;ie=UTF8&amp;q=google+map+dhaka+epz&amp;fb=1&amp;hq=epz&amp;hnear=Dhaka,+Bangladesh&amp;view=map&amp;cid=17632439492647733461&amp;t=h&amp;ll=23.674713,90.164795&amp;spn=4.607264,9.876709&amp;iwloc=A&amp;output=embed">
+        </iframe>
+		-->
+        
+    	
+    </div><!--company_info end-->
+	    	
+    <div class="company_table"><!--company_table start-->     
+    	<div class="company_table_title"><!--company_table_title start-->Survey Map</div><!--company_table_title end-->
+
+		<div class="big_line"><!--big_line start-->
+        	<?php echo $html->image('plain_line2.gif', array('alt' => 'bottom','border'=>'0') );?>
+        </div><!--big_line end-->
+        
+        <div id="chart1" style=" width:586px; height:343px;">
+        </div>
+      
+    </div><!--company_table end-->
+<div class="clear"></div> 	
+</div><!--company end-->
+
+
+
+
+
+<br /><br />
+
+<div class="summary"><!--summary start-->
+	<div class="summary_left"><!--summary_left start--></div><!--summary_left end-->
+    
+    <div class="summary_body"><!--summary_body start-->
+    	<div class="summary_title"><!--summary_title start--><br />All Summary </div><!--summary_title end-->
+        
+        <div class="summary_line"><!--summary_line start-->
+        	<?php echo $html->image('summary_line.gif', array('alt' => 'bottom','border'=>'0') );?>
+        </div><!--summary_line end-->
+        
+        <div class="summary_text"><!--summary_text start-->
+        	Using commands in the Transparency palette,you can also create special effects,such as knocking out underlying colors, or creating gratuated
+            transparencies or blends. For example, you can use the Knockout option.Using commands in the Transparency palette,you can also create special 
+            effects,such as knocking out underlying colors, or creating gratuated transparencies or blends. For example, you can use the Knockout option.
+        </div><!--summary_text end-->
+        
+        <div class="clear"></div> 
+    </div><!--summary_body end-->
+    
+    <div class="summary_right"><!--summary_right start--></div><!--summary_right end-->
+
+</div><!--summary end-->
+
+
+
+
+
+                    <br/><br/>
+                    
