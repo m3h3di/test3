@@ -11,6 +11,7 @@
 /bw/app.zip
 /bw/cake
 /bw/app/tmp
+
 /bw/app/config/core.php~
 /bw/app/config/database.php~
 /bw/app/views/users/login.ctp~
@@ -25,3 +26,11 @@
 /bw/app/views/users/download.ctp~
 /bw/app/views/assessments/login.ctp~
 /bw/app/views/elements/leftMenu.ctp~
+
+/dec/app.zip
+/dec/cake
+/dec/app/tmp
+
+/dec/app/config/database.php~
+/dec/app/views/admin/by_facility.ctp~
+/dec/app/views/admin/by_buyer.ctp~
